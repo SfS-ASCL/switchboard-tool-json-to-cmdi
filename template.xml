@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type='text/xsl' href='/cmdixsl/templates.xsl'?>
+<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cmd="http://www.clarin.eu/cmd/1"
+    xmlns:cmdp="http://www.clarin.eu/cmd/1/profiles/clarin.eu:cr1:p_1588142628405" CMDVersion="1.2"
+    xsi:schemaLocation="http://www.clarin.eu/cmd/1 https://infra.clarin.eu/CMDI/1.x/xsd/cmd-envelop.xsd
+    http://www.clarin.eu/cmd/1/profiles/clarin.eu:cr1:p_1588142628405 https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1588142628405/xsd">
+    <cmd:Header>
+        <cmd:MdCreator>SwitchboardToolJsonToCMDI</cmd:MdCreator>
+        <cmd:MdCreationDate></cmd:MdCreationDate>
+        <cmd:MdSelfLink></cmd:MdSelfLink>
+        <cmd:MdProfile>clarin.eu:cr1:p_1588142628405</cmd:MdProfile>
+        <cmd:MdCollectionDisplayName></cmd:MdCollectionDisplayName>
+    </cmd:Header>
+    <cmd:Resources>
+        <cmd:ResourceProxyList>
+            <cmd:ResourceProxy id="rp0">
+                <cmd:ResourceType>LandingPage</cmd:ResourceType>
+                <cmd:ResourceRef></cmd:ResourceRef>
+            </cmd:ResourceProxy>
+        </cmd:ResourceProxyList>
+        <cmd:JournalFileProxyList/>
+        <cmd:ResourceRelationList/>
+    </cmd:Resources>
+    <cmd:Components>
+        <cmdp:applicationDescription>
+            <cmdp:applicationName></cmdp:applicationName>
+            <cmdp:applicationLogo></cmdp:applicationLogo>
+            <cmdp:version></cmdp:version>
+            <cmdp:applicationCategory>Research Software</cmdp:applicationCategory>
+            <cmdp:applicationSubCategory></cmdp:applicationSubCategory>
+            <cmdp:maturityLevel></cmdp:maturityLevel>
+            <cmdp:applicationType>Web-UI</cmdp:applicationType>
+            <cmdp:toolType>other</cmdp:toolType>
+            <cmdp:Description></cmdp:Description>
+            <cmdp:softwareHelp></cmdp:softwareHelp>
+            <cmdp:developerDocumentation></cmdp:developerDocumentation>
+            <cmdp:maintenanceDocumentation></cmdp:maintenanceDocumentation>
+            <cmdp:evaluationDocumentation></cmdp:evaluationDocumentation>
+            <cmdp:sourceCodeArchive></cmdp:sourceCodeArchive>
+            <cmdp:sourceLicence></cmdp:sourceLicence>
+            <cmdp:encryptedCommunication>https</cmdp:encryptedCommunication>
+            <cmdp:dataPrivacyPolicy></cmdp:dataPrivacyPolicy>
+            <cmdp:authentication></cmdp:authentication>
+            <cmdp:interfaceLanguage></cmdp:interfaceLanguage>
+            <cmdp:targetUser>Scholars doing automatic analysis of texts</cmdp:targetUser>
+            <cmdp:Creators></cmdp:Creators>
+            <cmdp:applicationContacts>
+                <cmdp:hoster>
+                    <cmdp:location></cmdp:location>
+                </cmdp:hoster>
+                <cmdp:technicalContacts>
+                    <cmdp:contactEMail></cmdp:contactEMail>
+                    <cmdp:Person>
+                        <cmdp:firstName></cmdp:firstName>
+                        <cmdp:lastName></cmdp:lastName>
+                    </cmdp:Person>
+                </cmdp:technicalContacts>
+            </cmdp:applicationContacts>
+            <cmdp:webApplication>
+                <cmdp:browserRequirements></cmdp:browserRequirements>
+                <cmdp:applicationSuite></cmdp:applicationSuite>
+                <cmdp:scalabilityType>lectureSize</cmdp:scalabilityType>
+                <cmdp:APIaccess>
+                    <cmdp:APIAccessLink>
+                        <cmdp:URL></cmdp:URL>
+                        <cmdp:APIType>UserAgent</cmdp:APIType>
+                        <cmdp:languageEncoding></cmdp:languageEncoding>
+                        <cmdp:parameters></cmdp:parameters>
+                    </cmdp:APIAccessLink>
+                </cmdp:APIaccess>
+            </cmdp:webApplication>
+            <cmdp:inputFormats>
+                <cmdp:inputFormat>
+                </cmdp:inputFormat>
+            </cmdp:inputFormats>
+            <cmdp:outputFormats>
+                <cmdp:outputFormat>
+                </cmdp:outputFormat>
+            </cmdp:outputFormats>
+            <cmdp:usageRestrictions>
+                <cmdp:individualUserRestrictions>academic</cmdp:individualUserRestrictions>
+                <cmdp:countriesSupported>all</cmdp:countriesSupported>
+            </cmdp:usageRestrictions>
+        </cmdp:applicationDescription>
+    </cmd:Components>
+</cmd:CMD>
