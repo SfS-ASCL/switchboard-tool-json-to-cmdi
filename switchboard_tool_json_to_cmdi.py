@@ -18,6 +18,7 @@ HELP = """Usage:
 NS = {'e': "http://www.clarin.eu/cmd/1", # e from envelope
       'p': "http://www.clarin.eu/cmd/1/profiles/clarin.eu:cr1:p_1588142628405"} # p from profile
 
+LOGO_URL_PREFIX = "https://github.com/clarin-eric/switchboard-tool-registry/raw/master/logos/"
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -87,7 +88,7 @@ def convert(input, output):
     set_text(output, "e:Resources/e:ResourceProxyList/e:ResourceProxy/e:ResourceRef", input['homepage'])
 
     ad_set_text(output, "p:applicationName", input['name'])
-    ad_set_text(output, "p:applicationLogo", input['logo'])
+    ad_set_text(output, "p:applicationLogo", LOGO_URL_PREFIX + input['logo'])
     if input['version']:
         ad_set_text(output, "p:version", input['version'])
     ad_set_text(output, "p:applicationSubCategory", input['task'])
@@ -96,14 +97,11 @@ def convert(input, output):
     if input['url'] and input['url'].startswith('https://'):
         ad_set_text(output, "p:encryptedCommunication", "https ")
 
-    if input['licence']:
-        ad_set_text(output, "p:sourceLicence", input['licence'])
-
     if input['authentication'] and input['authentication'] != "no":
         ad_set_text(output, "p:authentication", input['authentication'])
 
     if input['creators']:
-        ad_set_text(output, "p:Creators", input['creators'])
+        ad_set_text(output, "p:Creators/p:Descriptions/p:Description", input['creators'])
 
     ad_set_text(output, "p:applicationContacts/p:hoster/p:location", input['location'])
 
@@ -140,6 +138,10 @@ def convert(input, output):
 
     for outputtype in input['output']:
         ad_add_element_text(output, "p:outputFormats/p:outputFormat", "mediaType", outputtype)
+
+    # if input['licence']:
+    #     ad_set_text(output, "p:sourceLicence", input['licence'])
+
 
 
 def main(argv):

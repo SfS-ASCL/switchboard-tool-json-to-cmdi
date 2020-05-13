@@ -38,13 +38,16 @@
             <cmdp:maintenanceDocumentation></cmdp:maintenanceDocumentation>
             <cmdp:evaluationDocumentation></cmdp:evaluationDocumentation>
             <cmdp:sourceCodeArchive></cmdp:sourceCodeArchive>
-            <cmdp:sourceLicence></cmdp:sourceLicence>
             <cmdp:encryptedCommunication>https</cmdp:encryptedCommunication>
             <cmdp:dataPrivacyPolicy></cmdp:dataPrivacyPolicy>
             <cmdp:authentication></cmdp:authentication>
             <cmdp:interfaceLanguage></cmdp:interfaceLanguage>
             <cmdp:targetUser>Scholars doing automatic analysis of texts</cmdp:targetUser>
-            <cmdp:Creators></cmdp:Creators>
+            <cmdp:Creators>
+             <cmdp:Descriptions>
+                 <cmdp:Description></cmdp:Description>
+             </cmdp:Descriptions>
+            </cmdp:Creators>
             <cmdp:applicationContacts>
                 <cmdp:hoster>
                     <cmdp:location></cmdp:location>
