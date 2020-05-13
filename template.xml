@@ -38,9 +38,10 @@
             <cmdp:maintenanceDocumentation></cmdp:maintenanceDocumentation>
             <cmdp:evaluationDocumentation></cmdp:evaluationDocumentation>
             <cmdp:sourceCodeArchive></cmdp:sourceCodeArchive>
-            <cmdp:encryptedCommunication>https</cmdp:encryptedCommunication>
-            <cmdp:dataPrivacyPolicy></cmdp:dataPrivacyPolicy>
-            <cmdp:authentication></cmdp:authentication>
+            <cmdp:encryptedCommunication>none</cmdp:encryptedCommunication>
+            <cmdp:dataPrivacyPolicy>unknown</cmdp:dataPrivacyPolicy>
+            <cmdp:authentication>none</cmdp:authentication>
+            <cmdp:authenticationDescription></cmdp:authenticationDescription>
             <cmdp:interfaceLanguage></cmdp:interfaceLanguage>
             <cmdp:targetUser>Scholars doing automatic analysis of texts</cmdp:targetUser>
             <cmdp:Creators>
@@ -57,6 +58,7 @@
                     <cmdp:Person>
                         <cmdp:firstName></cmdp:firstName>
                         <cmdp:lastName></cmdp:lastName>
+                        <cmdp:role></cmdp:role>
                     </cmdp:Person>
                 </cmdp:technicalContacts>
             </cmdp:applicationContacts>
@@ -67,19 +69,16 @@
                 <cmdp:APIaccess>
                     <cmdp:APIAccessLink>
                         <cmdp:URL></cmdp:URL>
-                        <cmdp:APIType>UserAgent</cmdp:APIType>
+                        <cmdp:APIType>other</cmdp:APIType>
+                        <cmdp:APIDescription>The Web Application must be used in a web browser</cmdp:APIDescription>
                         <cmdp:languageEncoding></cmdp:languageEncoding>
                         <cmdp:parameters></cmdp:parameters>
                     </cmdp:APIAccessLink>
                 </cmdp:APIaccess>
             </cmdp:webApplication>
             <cmdp:inputFormats>
-                <cmdp:inputFormat>
-                </cmdp:inputFormat>
             </cmdp:inputFormats>
             <cmdp:outputFormats>
-                <cmdp:outputFormat>
-                </cmdp:outputFormat>
             </cmdp:outputFormats>
             <cmdp:usageRestrictions>
                 <cmdp:individualUserRestrictions>academic</cmdp:individualUserRestrictions>

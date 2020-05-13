@@ -2,7 +2,7 @@
 from __future__ import print_function, absolute_import
 
 import sys, getopt
-from datetime import datetime
+from datetime import date
 from os import listdir
 from os.path import basename, splitext, isfile, join
 
@@ -84,30 +84,36 @@ def take_arguments(argv):
 
 
 def convert(input, output):
-    set_text(output, "e:Header/e:MdCreationDate", datetime.now().isoformat())
-    set_text(output, "e:Resources/e:ResourceProxyList/e:ResourceProxy/e:ResourceRef", input['homepage'])
+    set_text(output, "e:Header/e:MdCreationDate", date.today().isoformat())
+    set_text(output, "e:Resources/e:ResourceProxyList/e:ResourceProxy/e:ResourceRef", input['homepage'].strip())
 
-    ad_set_text(output, "p:applicationName", input['name'])
+    ad_set_text(output, "p:applicationName", input['name'].strip())
     ad_set_text(output, "p:applicationLogo", LOGO_URL_PREFIX + input['logo'])
     if input['version']:
-        ad_set_text(output, "p:version", input['version'])
-    ad_set_text(output, "p:applicationSubCategory", input['task'])
-    ad_set_text(output, "p:maturityLevel", input['deployment'])
-    ad_set_text(output, "p:Description", input['description'])
+        ad_set_text(output, "p:version", input['version'].strip())
+    ad_set_text(output, "p:applicationSubCategory", input['task'].strip())
+    ad_set_text(output, "p:maturityLevel", input['deployment'].strip())
+    ad_set_text(output, "p:Description", input['description'].strip())
     if input['url'] and input['url'].startswith('https://'):
-        ad_set_text(output, "p:encryptedCommunication", "https ")
+        ad_set_text(output, "p:encryptedCommunication", "https")
 
     if input['authentication'] and input['authentication'] != "no":
-        ad_set_text(output, "p:authentication", input['authentication'])
+        if "Requires a CLARIN Service Provider Federation account" in input['authentication']:
+            ad_set_text(output, "p:authentication", "Shibboleth")
+        elif input['authentication'].startswith("Yes."):
+            ad_set_text(output, "p:authentication", "proprietary")
+        else:
+            ad_set_text(output, "p:authentication", "unknown")
+        ad_set_text(output, "p:authenticationDescription", input['authentication'].strip())
 
     if input['creators']:
-        ad_set_text(output, "p:Creators/p:Descriptions/p:Description", input['creators'])
+        ad_set_text(output, "p:Creators/p:Descriptions/p:Description", input['creators'].strip())
 
-    ad_set_text(output, "p:applicationContacts/p:hoster/p:location", input['location'])
+    ad_set_text(output, "p:applicationContacts/p:hoster/p:location", input['location'].strip())
 
     if input['contact']:
         if input['contact']['email']:
-            ad_set_text(output, "p:applicationContacts/p:technicalContacts/p:contactEMail", input['contact']['email'])
+            ad_set_text(output, "p:applicationContacts/p:technicalContacts/p:contactEMail", input['contact']['email'].strip())
         if input['contact']['person']:
             name = input['contact']['person'] or ""
             names = name.split(sep=' ', maxsplit=1)
@@ -116,28 +122,34 @@ def convert(input, output):
             if names and len(names) > 1 and names[1]:
                 ad_set_text(output, "p:applicationContacts/p:technicalContacts/p:Person/p:lastName", names[1])
 
-    ad_set_text(output, "p:webApplication/p:APIaccess/p:APIAccessLink/p:URL", input['url'])
+    ad_set_text(output, "p:webApplication/p:APIaccess/p:APIAccessLink/p:URL", input['url'].strip())
 
     if input['langEncoding']:
-        ad_set_text(output, "p:webApplication/p:APIaccess/p:APIAccessLink/p:languageEncoding", input['langEncoding'])
+        ad_set_text(output, "p:webApplication/p:APIaccess/p:APIAccessLink/p:languageEncoding", input['langEncoding'].strip())
 
     parametersxml = output.find("e:Components/p:applicationDescription/p:webApplication/p:APIaccess/p:APIAccessLink/p:parameters", NS)
     for param in input['parameters']:
         pxml = subelement_p(parametersxml, "parameter")
         name = param
         if input.get('mapping') and input['mapping'].get(name):
-            name = input['mapping'][name]
+            name = input['mapping'][name].strip()
         subelement_p(pxml, "name").text = param
         if input['parameters'][param]:
-            subelement_p(pxml, "value").text = input['parameters'][param]
+            subelement_p(pxml, "value").text = input['parameters'][param].strip()
+        else:
+            subelement_p(pxml, "value")
 
+    inputsxml = output.find("e:Components/p:applicationDescription/p:inputFormats", NS)
     for mediatype in input['mimetypes']:
-        ad_add_element_text(output, "p:inputFormats/p:inputFormat", "mediaType", mediatype)
-    for lang in input['languages']:
-        ad_add_element_text(output, "p:inputFormats/p:inputFormat", "supportedLanguage", lang)
+        inxml = subelement_p(inputsxml, "inputFormat")
+        subelement_p(inxml, "mediaType").text = mediatype.strip()
+        for lang in input['languages']:
+            subelement_p(inxml, "supportedLanguage").text = lang.strip()
 
+    outputssxml = output.find("e:Components/p:applicationDescription/p:outputFormats", NS)
     for outputtype in input['output']:
-        ad_add_element_text(output, "p:outputFormats/p:outputFormat", "mediaType", outputtype)
+        outxml = subelement_p(outputssxml, "outputFormat")
+        subelement_p(outxml, "mediaType").text = outputtype.strip()
 
     # if input['licence']:
     #     ad_set_text(output, "p:sourceLicence", input['licence'])
