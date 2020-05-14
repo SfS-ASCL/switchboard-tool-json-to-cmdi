@@ -66,6 +66,7 @@
                 <cmdp:browserRequirements></cmdp:browserRequirements>
                 <cmdp:applicationSuite></cmdp:applicationSuite>
                 <cmdp:scalabilityType>lectureSize</cmdp:scalabilityType>
+                <cmdp:licenseInformation></cmdp:licenseInformation>
                 <cmdp:APIaccess>
                     <cmdp:APIAccessLink>
                         <cmdp:URL></cmdp:URL>

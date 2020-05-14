@@ -32,6 +32,11 @@ def set_text(root, xpath, text):
 def ad_set_text(root, xpath, text):
     set_text(root, "e:Components/p:applicationDescription/" + xpath, text)
 
+def ad_remove(root, xpath):
+    x = root.find("e:Components/p:applicationDescription/" + xpath, NS)
+    print (x)
+    x.find("..").remove(x)
+
 def subelement_p(parent, name):
     return ElementTree.SubElement(parent, "{{{}}}{}".format(NS['p'], name))
 
@@ -130,29 +135,35 @@ def convert(input, output):
     parametersxml = output.find("e:Components/p:applicationDescription/p:webApplication/p:APIaccess/p:APIAccessLink/p:parameters", NS)
     for param in input['parameters']:
         pxml = subelement_p(parametersxml, "parameter")
+        if param in ['input', 'lang', 'type']:
+            pxml.set("role", param)
         name = param
         if input.get('mapping') and input['mapping'].get(name):
             name = input['mapping'][name].strip()
-        subelement_p(pxml, "name").text = param
+        subelement_p(pxml, "name").text = name
         if input['parameters'][param]:
             subelement_p(pxml, "value").text = input['parameters'][param].strip()
         else:
             subelement_p(pxml, "value")
 
+    if input['licence']:
+        ad_set_text(output, "p:webApplication/p:licenseInformation", input['licence'].strip())
+    else:
+        webappxml = output.find("e:Components/p:applicationDescription/p:webApplication", NS)
+        license = output.find("e:Components/p:applicationDescription/p:webApplication/p:licenseInformation", NS)
+        webappxml.remove(license)
+
     inputsxml = output.find("e:Components/p:applicationDescription/p:inputFormats", NS)
+    for lang in input['languages']:
+        subelement_p(inputsxml, "supportedLanguage").text = lang.strip()
     for mediatype in input['mimetypes']:
         inxml = subelement_p(inputsxml, "inputFormat")
         subelement_p(inxml, "mediaType").text = mediatype.strip()
-        for lang in input['languages']:
-            subelement_p(inxml, "supportedLanguage").text = lang.strip()
 
     outputssxml = output.find("e:Components/p:applicationDescription/p:outputFormats", NS)
     for outputtype in input['output']:
         outxml = subelement_p(outputssxml, "outputFormat")
         subelement_p(outxml, "mediaType").text = outputtype.strip()
-
-    # if input['licence']:
-    #     ad_set_text(output, "p:sourceLicence", input['licence'])
 
 
 
