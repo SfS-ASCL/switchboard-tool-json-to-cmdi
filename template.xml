@@ -33,10 +33,6 @@
             <cmdp:applicationType>Web-UI</cmdp:applicationType>
             <cmdp:toolType>other</cmdp:toolType>
             <cmdp:Description></cmdp:Description>
-            <cmdp:softwareHelp></cmdp:softwareHelp>
-            <cmdp:developerDocumentation></cmdp:developerDocumentation>
-            <cmdp:maintenanceDocumentation></cmdp:maintenanceDocumentation>
-            <cmdp:evaluationDocumentation></cmdp:evaluationDocumentation>
             <cmdp:sourceCodeArchive></cmdp:sourceCodeArchive>
             <cmdp:encryptedCommunication>none</cmdp:encryptedCommunication>
             <cmdp:dataPrivacyPolicy>unknown</cmdp:dataPrivacyPolicy>
@@ -45,9 +41,9 @@
             <cmdp:interfaceLanguage></cmdp:interfaceLanguage>
             <cmdp:targetUser>Scholars doing automatic analysis of texts</cmdp:targetUser>
             <cmdp:Creators>
-             <cmdp:Descriptions>
-                 <cmdp:Description></cmdp:Description>
-             </cmdp:Descriptions>
+                <cmdp:Descriptions>
+                    <cmdp:Description></cmdp:Description>
+                </cmdp:Descriptions>
             </cmdp:Creators>
             <cmdp:applicationContacts>
                 <cmdp:hoster>

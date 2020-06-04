@@ -84,7 +84,18 @@ def take_arguments(argv):
              if isfile(join(input_dir, f)) and f.endswith(".json")]
     for e in entries:
         [name, ext] = splitext(basename(e['input_file']))
-        e['output_file'] = join(input_dir, name+".cmdi.xml")
+        name = join(input_dir, name+".cmdi.xml")
+        name = name.replace(' -> ', '_')
+        name = name.replace('->', '_')
+        name = name.replace('(', '_')
+        name = name.replace(')', '_')
+        name = name.replace('\'s', '_')
+        name = name.replace(' ', '_')
+        name = name.replace('_-', '_')
+        name = name.replace('-_', '_')
+        name = name.replace('__', '_')
+        name = name.replace('_.', '.')
+        e['output_file'] = name
     return entries
 
 
@@ -157,12 +168,12 @@ def convert(input, output):
     for lang in input['languages']:
         subelement_p(inputsxml, "supportedLanguage").text = lang.strip()
     for mediatype in input['mimetypes']:
-        inxml = subelement_p(inputsxml, "inputFormat")
+        inxml = subelement_p(inputsxml, "format")
         subelement_p(inxml, "mediaType").text = mediatype.strip()
 
     outputssxml = output.find("e:Components/p:applicationDescription/p:outputFormats", NS)
     for outputtype in input['output']:
-        outxml = subelement_p(outputssxml, "outputFormat")
+        outxml = subelement_p(outputssxml, "format")
         subelement_p(outxml, "mediaType").text = outputtype.strip()
 
 
