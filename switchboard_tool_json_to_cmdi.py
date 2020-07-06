@@ -106,7 +106,7 @@ def convert(input, output):
     ad_set_text(output, "p:applicationName", input['name'].strip())
     ad_set_text(output, "p:applicationLogo", LOGO_URL_PREFIX + input['logo'])
     if input['version']:
-        ad_set_text(output, "p:version", input['version'].strip())
+        ad_set_text(output, "p:softwareVersion", input['version'].strip())
     ad_set_text(output, "p:applicationSubCategory", input['task'].strip())
     ad_set_text(output, "p:maturityLevel", input['deployment'].strip())
     ad_set_text(output, "p:Description", input['description'].strip())

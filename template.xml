@@ -26,7 +26,7 @@
         <cmdp:applicationDescription>
             <cmdp:applicationName></cmdp:applicationName>
             <cmdp:applicationLogo></cmdp:applicationLogo>
-            <cmdp:version></cmdp:version>
+            <cmdp:softwareVersion></cmdp:softwareVersion>
             <cmdp:applicationCategory>Research Software</cmdp:applicationCategory>
             <cmdp:applicationSubCategory></cmdp:applicationSubCategory>
             <cmdp:maturityLevel></cmdp:maturityLevel>
