@@ -3,6 +3,7 @@ from __future__ import print_function, absolute_import
 import sys
 import json
 import os
+import re
 from xml.etree import ElementTree
 
 NS = {'c': "http://www.clarin.eu/cmd/1", # e from envelope
@@ -193,7 +194,10 @@ def copytext(text, dst, dstkey):
         if text is None:
             return
     if text:
-        dst[dstkey] = text.strip()
+        text = text.strip()
+        text = re.sub("[ \t]{2,}", " ", text)
+        text = re.sub("\n ", "\n", text)
+        dst[dstkey] = text
 
 def copy(src, srcpath, dst, dstkey):
     x = src.find(srcpath, NS)
