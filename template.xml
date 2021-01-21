@@ -63,7 +63,7 @@
                 <cmdp:applicationSuite></cmdp:applicationSuite>
                 <cmdp:scalabilityType>lectureSize</cmdp:scalabilityType>
                 <cmdp:licenseInformation></cmdp:licenseInformation>
-                <cmdp:APIaccess>
+                <cmdp:APIAccess>
                     <cmdp:APIAccessLink>
                         <cmdp:URL></cmdp:URL>
                         <cmdp:APIType>other</cmdp:APIType>
@@ -71,7 +71,7 @@
                         <cmdp:languageEncoding></cmdp:languageEncoding>
                         <cmdp:parameters></cmdp:parameters>
                     </cmdp:APIAccessLink>
-                </cmdp:APIaccess>
+                </cmdp:APIAccess>
             </cmdp:webApplication>
             <cmdp:inputFormats>
             </cmdp:inputFormats>

@@ -76,7 +76,7 @@ def take_arguments(argv):
         sys.exit(2)
 
     if not input_dir:
-        entries = [{input_file, output_file}]
+        entries = [{'input_file':input_file, 'output_file':output_file}]
         return entries
 
     entries = [{'input_file': join(input_dir, f)}
@@ -180,7 +180,6 @@ def convert(input, output):
 
 def main(argv):
     entries = take_arguments(argv)
-
     for entry in entries:
         with open(entry['input_file']) as f:
             input = json.load(f)
