@@ -105,7 +105,7 @@ def convert(input, output):
 
     ad_set_text(output, "p:applicationName", input['name'].strip())
     ad_set_text(output, "p:applicationLogo", LOGO_URL_PREFIX + input['logo'])
-    if input['version']:
+    if input.get('version'):
         ad_set_text(output, "p:softwareVersion", input['version'].strip())
     ad_set_text(output, "p:applicationSubCategory", input['task'].strip())
     ad_set_text(output, "p:maturityLevel", input['deployment'].strip())
@@ -138,12 +138,12 @@ def convert(input, output):
             if names and len(names) > 1 and names[1]:
                 ad_set_text(output, "p:applicationContacts/p:technicalContacts/p:Person/p:lastName", names[1])
 
-    ad_set_text(output, "p:webApplication/p:APIaccess/p:APIAccessLink/p:URL", input['url'].strip())
+    ad_set_text(output, "p:webApplication/p:APIAccess/p:APIAccessLink/p:URL", input['url'].strip())
 
     if input['langEncoding']:
-        ad_set_text(output, "p:webApplication/p:APIaccess/p:APIAccessLink/p:languageEncoding", input['langEncoding'].strip())
+        ad_set_text(output, "p:webApplication/p:APIAccess/p:APIAccessLink/p:languageEncoding", input['langEncoding'].strip())
 
-    parametersxml = output.find("e:Components/p:applicationDescription/p:webApplication/p:APIaccess/p:APIAccessLink/p:parameters", NS)
+    parametersxml = output.find("e:Components/p:applicationDescription/p:webApplication/p:APIAccess/p:APIAccessLink/p:parameters", NS)
     for param in input['parameters']:
         pxml = subelement_p(parametersxml, "parameter")
         if param in ['input', 'lang', 'type']:
