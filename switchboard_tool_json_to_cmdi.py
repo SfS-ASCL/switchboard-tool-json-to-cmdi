@@ -95,6 +95,7 @@ def take_arguments(argv):
         name = name.replace('-_', '_')
         name = name.replace('__', '_')
         name = name.replace('_.', '.')
+        name = name.replace(',', '_')
         e['output_file'] = name
     return entries
 
@@ -153,7 +154,7 @@ def convert(input, output):
             name = input['mapping'][name].strip()
         subelement_p(pxml, "name").text = name
         if input['parameters'][param]:
-            subelement_p(pxml, "value").text = input['parameters'][param].strip()
+            subelement_p(pxml, "value").text = str(input['parameters'][param]).strip()
         else:
             subelement_p(pxml, "value")
 
@@ -184,7 +185,13 @@ def main(argv):
         with open(entry['input_file']) as f:
             input = json.load(f)
         output_tree = ElementTree.parse("./template.xml")
-        convert(input, output_tree.getroot())
+        print("Convert " + entry['input_file'])
+        if input.get("formatVersion") == "2":
+            eprint("    !!! Cannot convert format version 2")
+        elif not input['url']:
+            eprint("    !!! Not a invokable web application")
+        else:
+            convert(input, output_tree.getroot())
         output_tree.write(entry['output_file'])
 
 
