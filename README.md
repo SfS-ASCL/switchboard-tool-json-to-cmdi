@@ -1,3 +1,3 @@
 # switchboard-tool-json-to-cmdi
 
-Convert the a Switchboard tool description (in JSON) to the equivalent CMDI representation and viceversa.
+Converters between the Switchboard tool description JSON format and the equivalent CLARIAH CMDI representation.
